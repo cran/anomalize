@@ -1,7 +1,7 @@
 Package: anomalize
 Type: Package
 Title: Tidy Anomaly Detection
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Matt", "Dancho", email = "mdancho@business-science.io", role = c("aut", "cre")),
     person("Davis", "Vaughan", email = "dvaughan@business-science.io", role = c("aut"))
@@ -31,9 +31,9 @@ Suggests: tidyverse, tidyquant, testthat, covr, knitr, rmarkdown,
         devtools, roxygen2
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-04-05 17:06:16 UTC; mdancho
+Packaged: 2018-04-17 10:44:16 UTC; mdancho
 Author: Matt Dancho [aut, cre],
   Davis Vaughan [aut]
 Maintainer: Matt Dancho <mdancho@business-science.io>
 Repository: CRAN
-Date/Publication: 2018-04-06 11:39:58 UTC
+Date/Publication: 2018-04-17 11:51:22 UTC

@@ -7,6 +7,9 @@
 status](https://travis-ci.org/business-science/anomalize.svg?branch=master)](https://travis-ci.org/business-science/anomalize)
 [![Coverage
 status](https://codecov.io/gh/business-science/anomalize/branch/master/graph/badge.svg)](https://codecov.io/github/business-science/anomalize?branch=master)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/anomalize)](https://cran.r-project.org/package=anomalize)
+![](http://cranlogs.r-pkg.org/badges/anomalize?color=brightgreen)
+![](http://cranlogs.r-pkg.org/badges/grand-total/anomalize?color=brightgreen)
 
 > Tidy anomaly detection
 
@@ -17,34 +20,23 @@ series, detect anomalies, and create bands separating the “normal” data
 from the anomalous
 data.
 
-<!-- ## Benefits -->
+## Anomalize In 2 Minutes (YouTube)
 
-<!-- With `anomalize` you can: -->
+<a href="https://www.youtube.com/watch?v=Gk_HwjhlQJs" target="_blank"><img src="http://img.youtube.com/vi/Gk_HwjhlQJs/0.jpg" 
+alt="Anomalize" width="100%" height="350"/></a>
 
-<!-- - Perform anomaly detection on grouped data -->
-
-<!-- - Get bands that separates the "normal" data from the anomalies! -->
-
-<!-- - Implement the best decomposition techniques including Seasonal Decomposition (STL), Twitter AnomalyDetection, and Multiplicative Decomposition -->
-
-<!-- - Use two outlier detection methods including IQR (fast and reliable) and GESD (best performance) -->
-
-<!-- - Visualize:  -->
-
-<!--     - Time series decomposition on a single time series, which is useful for seeing the affects of the parameters -->
-
-<!--     - Anomaly detection on many time series (grouped in one data frame) -->
-
-<!-- Let's check `anomalize` out! -->
+Check out our entire [Software Intro
+Series](https://www.youtube.com/watch?v=Gk_HwjhlQJs&list=PLo32uKohmrXsYNhpdwr15W143rX6uMAze)
+on YouTube\!
 
 ## Installation
 
-<!-- You can install the released version of anomalize from [CRAN](https://CRAN.R-project.org) with: -->
-
-You can install the development version with `devtools`:
+You can install the development version with `devtools` or the most
+recent CRAN version with `install.packages()`:
 
 ``` r
-devtools::install_github("business-science/anomalize")
+# devtools::install_github("business-science/anomalize")
+install.packages("anomalize")
 ```
 
 ## How It Works
