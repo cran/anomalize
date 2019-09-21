@@ -29,5 +29,7 @@ globalVariables(c(
     "key",
     "median_spans",
     "recomposed_l1",
-    "recomposed_l2"
+    "recomposed_l2",
+    "data_names",
+    "nested.col"
     ))

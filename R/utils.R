@@ -8,8 +8,7 @@ grouped_mapper <- function(data, target, .f, ...) {
 
     target_expr     <- dplyr::enquo(target)
 
-    group_names     <- dplyr::groups(data)
-    group_vars_expr <- rlang::syms(group_names)
+    group_names     <- dplyr::group_vars(data)
 
     ret <- data %>%
         tidyr::nest() %>%
@@ -20,8 +19,8 @@ grouped_mapper <- function(data, target, .f, ...) {
             ...)
         ) %>%
         dplyr::select(-data) %>%
-        tidyr::unnest() %>%
-        dplyr::group_by(!!! group_vars_expr)
+        tidyr::unnest(cols = nested.col) %>%
+        dplyr::group_by_at(.vars = group_names)
 
     # if (merge) {
     #     ret <- merge_two_tibbles(tib1 = data, tib2 = ret, .f = .f)
@@ -132,12 +131,12 @@ arrange_by_date <- function(tib) {
 
     if (dplyr::is.grouped_df(tib)) {
 
-        group_names <- dplyr::groups(tib)
+        group_names <- dplyr::group_vars(tib)
 
         arrange_date <- function(tib) {
             date_col <- timetk::tk_get_timeseries_variables(tib)[[1]]
             tib %>%
-                dplyr::arrange_(date_col)
+                dplyr::arrange(!! rlang::sym(date_col))
         }
 
         tib <- tib %>%
@@ -146,14 +145,14 @@ arrange_by_date <- function(tib) {
                               purrr::map(data, arrange_date)
             ) %>%
             dplyr::select(-data) %>%
-            tidyr::unnest() %>%
-            dplyr::group_by_(.dots = group_names)
+            tidyr::unnest(cols = nested.col) %>%
+            dplyr::group_by_at(.vars = group_names)
 
 
     } else {
-
+        date_col <- timetk::tk_get_timeseries_variables(tib)[[1]]
         tib <- tib %>%
-            dplyr::arrange_(timetk::tk_get_timeseries_variables(tib)[[1]])
+            dplyr::arrange(!! rlang::sym(date_col))
 
     }
 
@@ -172,7 +171,7 @@ drop_date_and_group_cols <- function(tib) {
 
     tib <- tib %>%
         dplyr::ungroup() %>%
-        dplyr::select_(.dots = as.list(tib_names_without_date_or_group))
+        dplyr::select(!!! rlang::syms(tib_names_without_date_or_group))
 
     return(tib)
 }

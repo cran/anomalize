@@ -1,7 +1,7 @@
 Package: anomalize
 Type: Package
 Title: Tidy Anomaly Detection
-Version: 0.1.1
+Version: 0.2.0
 Authors@R: c(
     person("Matt", "Dancho", email = "mdancho@business-science.io", role = c("aut", "cre")),
     person("Davis", "Vaughan", email = "dvaughan@business-science.io", role = c("aut"))
@@ -24,16 +24,17 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.0.0)
-Imports: dplyr, glue, timetk, sweep, tibbletime, purrr, rlang, tibble,
-        tidyr, ggplot2
-RoxygenNote: 6.0.1
-Suggests: tidyverse, tidyquant, testthat, covr, knitr, rmarkdown,
-        devtools, roxygen2
+Imports: dplyr, glue, timetk, sweep, tibbletime (>= 0.1.3), purrr,
+        rlang, tibble, tidyr (>= 1.0.0), ggplot2, cli, crayon,
+        rstudioapi
+RoxygenNote: 6.1.1
+Suggests: tidyverse, tidyquant, stringr, testthat (>= 2.1.0), covr,
+        knitr, rmarkdown, devtools, roxygen2
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-04-17 10:44:16 UTC; mdancho
+Packaged: 2019-09-20 23:44:55 UTC; mdancho
 Author: Matt Dancho [aut, cre],
   Davis Vaughan [aut]
 Maintainer: Matt Dancho <mdancho@business-science.io>
 Repository: CRAN
-Date/Publication: 2018-04-17 11:51:22 UTC
+Date/Publication: 2019-09-21 04:10:03 UTC
