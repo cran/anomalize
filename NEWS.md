@@ -1,3 +1,10 @@
+# anomalize 0.2.1
+
+__Bug Fixes__
+
+* Fix issue with sign error in GESD Method (Issue #46).
+* Require `tibbletime` >= 0.1.5 
+
 # anomalize 0.2.0
 
 * `clean_anomalies()` - A new function to simplify cleaning anomalies by replacing with trend and seasonal components. This is useful in preparing data for forecasting. 

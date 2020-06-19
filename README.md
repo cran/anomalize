@@ -1,9 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- # anomalize -->
+
 # anomalize
 
-<!-- # anomalize <img src="man/figures/anomalize-logo.png" width="147" height="170" align="right" /> -->
+<!--<img src="man/figures/anomalize-logo.png" width="147" height="170" align="right" /> -->
 
 [![Travis build
 status](https://travis-ci.org/business-science/anomalize.svg?branch=master)](https://travis-ci.org/business-science/anomalize)
@@ -19,8 +21,7 @@ status](https://codecov.io/gh/business-science/anomalize/branch/master/graph/bad
 main functions are `time_decompose()`, `anomalize()`, and
 `time_recompose()`. When combined, it’s quite simple to decompose time
 series, detect anomalies, and create bands separating the “normal” data
-from the anomalous
-data.
+from the anomalous data.
 
 ## Anomalize In 2 Minutes (YouTube)
 

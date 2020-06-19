@@ -1,4 +1,4 @@
-## ---- include = FALSE----------------------------------------------------
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -8,16 +8,16 @@ knitr::opts_chunk$set(
 
 devtools::load_all()
 
-## ----setup, message=FALSE------------------------------------------------
+## ----setup, message=FALSE-----------------------------------------------------
 library(tidyverse)
 library(tidyquant)
 library(anomalize)
 library(timetk)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 tidyverse_cran_downloads
 
-## ---- fig.height=8, fig.width=6------------------------------------------
+## ---- fig.height=8, fig.width=6-----------------------------------------------
 tidyverse_cran_downloads %>%
   ggplot(aes(date, count, color = package)) +
   geom_point(alpha = 0.5) +
@@ -25,12 +25,12 @@ tidyverse_cran_downloads %>%
   scale_color_viridis_d() +
   theme_tq() 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 lubridate_tbl <- tidyverse_cran_downloads %>%
   ungroup() %>%
   filter(package == "lubridate")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 forecast_mae <- function(data, col_train, col_test, prop = 0.8) {
   
   predict_expr <- enquo(col_train)
@@ -62,7 +62,7 @@ forecast_mae <- function(data, col_train, col_test, prop = 0.8) {
   
 }
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 lubridate_anomalized_tbl <- lubridate_tbl %>%
   time_decompose(count) %>%
   anomalize(remainder) %>%
@@ -72,14 +72,14 @@ lubridate_anomalized_tbl <- lubridate_tbl %>%
 
 lubridate_anomalized_tbl
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 lubridate_anomalized_tbl %>%
   forecast_mae(col_train = observed, col_test = observed, prop = 0.8)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 lubridate_anomalized_tbl %>%
   forecast_mae(col_train = observed_cleaned, col_test = observed, prop = 0.8)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 (2755 - 4054) / 4054 
 
