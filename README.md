@@ -3,9 +3,7 @@
 
 <!-- # anomalize -->
 
-# anomalize
-
-<!--<img src="man/figures/anomalize-logo.png" width="147" height="170" align="right" /> -->
+# anomalize <img src="man/figures/anomalize-logo.png" width="147" height="170" align="right" />
 
 [![Travis build
 status](https://travis-ci.org/business-science/anomalize.svg?branch=master)](https://travis-ci.org/business-science/anomalize)
