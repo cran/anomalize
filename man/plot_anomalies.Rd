@@ -54,6 +54,7 @@ Multiple time series must be grouped using \code{dplyr::group_by()}.
 }
 \examples{
 
+\dontrun{
 library(dplyr)
 library(ggplot2)
 
@@ -75,6 +76,7 @@ tidyverse_cran_downloads \%>\%
     anomalize(remainder, method = "iqr") \%>\%
     time_recompose() \%>\%
     plot_anomalies(time_recomposed = TRUE, ncol = 3)
+}
 
 }
 \seealso{

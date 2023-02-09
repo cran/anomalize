@@ -6,14 +6,10 @@ knitr::opts_chunk$set(
   fig.align = "center"
 )
 
-devtools::load_all()
+## ---- eval = T, message = F, warning = F--------------------------------------
 library(tidyverse)
 library(tibbletime)
-
-## ---- eval = F----------------------------------------------------------------
-#  library(tidyverse)
-#  library(tibbletime)
-#  library(anomalize)
+library(anomalize)
 
 ## -----------------------------------------------------------------------------
 tidyverse_cran_downloads
@@ -60,10 +56,10 @@ get_time_scale_template()
 p2 <- lubridate_daily_downloads %>%
     time_decompose(count,
                    frequency = "auto",
-                   trend     = "2 weeks") %>%
+                   trend     = "14 days") %>%
     anomalize(remainder) %>%
     plot_anomaly_decomposition() +
-    ggtitle("Trend = 2 Weeks (Local)")
+    ggtitle("Trend = 14 Days (Local)")
 
 # Show plots
 p1
@@ -72,7 +68,7 @@ p2
 ## -----------------------------------------------------------------------------
 # Globally change time scale template options
 time_scale_template() %>%
-    mutate(trend = ifelse(time_scale == "day", "2 weeks", trend)) %>%
+    mutate(trend = ifelse(time_scale == "day", "14 days", trend)) %>%
     set_time_scale_template()
 
 get_time_scale_template()
@@ -82,7 +78,7 @@ p3 <- lubridate_daily_downloads %>%
     time_decompose(count) %>%
     anomalize(remainder) %>%
     plot_anomaly_decomposition() +
-    ggtitle("Trend = 2 Weeks (Global)")
+    ggtitle("Trend = 14 Days (Global)")
 
 p3
 
