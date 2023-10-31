@@ -9,9 +9,15 @@ knitr::opts_chunk$set(
 devtools::load_all()
 library(tidyverse)
 
-## ---- eval = F----------------------------------------------------------------
+## ----eval = F-----------------------------------------------------------------
 #  library(tidyverse)
 #  library(anomalize)
+#  
+#  # NOTE: timetk now has anomaly detection built in, which
+#  #  will get the new functionality going forward.
+#  
+#  anomalize <- anomalize::anomalize
+#  plot_anomalies <- anomalize::plot_anomalies
 
 ## -----------------------------------------------------------------------------
 # Data on `lubridate` package daily downloads
@@ -24,7 +30,7 @@ lubridate_download_history %>%
     head(10) %>%
     knitr::kable()
 
-## ---- fig.show='hold', fig.height=7, fig.align='default'----------------------
+## ----fig.show='hold', fig.height=7, fig.align='default'-----------------------
 # STL Decomposition Method
 p1 <- lubridate_download_history %>%
     time_decompose(count, 
@@ -49,7 +55,7 @@ p2 <- lubridate_download_history %>%
 p1
 p2
 
-## ---- fig.height=3, fig.width=5-----------------------------------------------
+## ----fig.height=3, fig.width=5------------------------------------------------
 # Generate anomalies
 set.seed(100)
 x <- rnorm(100)
@@ -61,7 +67,7 @@ qplot(1:length(x), x,
       main = "Simulated Anomalies",
       xlab = "Index") 
 
-## ---- fig.show="hold", fig.width=5--------------------------------------------
+## ----fig.show="hold", fig.width=5---------------------------------------------
 # Analyze outliers: Outlier Report is available with verbose = TRUE
 iqr_outliers <- iqr(x, alpha = 0.05, max_anoms = 0.2, verbose = TRUE)$outlier_report
 

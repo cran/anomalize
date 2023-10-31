@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -14,10 +14,17 @@ library(tidyquant)
 library(anomalize)
 library(timetk)
 
+# NOTE: timetk now has anomaly detection built in, which 
+#  will get the new functionality going forward.
+#  Use this script to prevent overwriting legacy anomalize:
+
+anomalize <- anomalize::anomalize
+plot_anomalies <- anomalize::plot_anomalies
+
 ## -----------------------------------------------------------------------------
 tidyverse_cran_downloads
 
-## ---- fig.height=8, fig.width=6-----------------------------------------------
+## ----fig.height=8, fig.width=6------------------------------------------------
 tidyverse_cran_downloads %>%
   ggplot(aes(date, count, color = package)) +
   geom_point(alpha = 0.5) +

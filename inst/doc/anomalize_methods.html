@@ -12,7 +12,7 @@
 
 <meta name="author" content="Business Science" />
 
-<meta name="date" content="2023-09-25" />
+<meta name="date" content="2023-10-31" />
 
 <title>Anomalize Methods</title>
 
@@ -340,7 +340,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Anomalize Methods</h1>
 <h4 class="author">Business Science</h4>
-<h4 class="date">2023-09-25</h4>
+<h4 class="date">2023-10-31</h4>
 
 
 <div id="TOC">
@@ -443,7 +443,13 @@ anomalies.</p>
 <h3>1.C. Comparison of STL and Twitter Decomposition Methods</h3>
 <p>Load two libraries to perform the comparison.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(anomalize)</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(anomalize)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: timetk now has anomaly detection built in, which </span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#  will get the new functionality going forward.</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>anomalize <span class="ot">&lt;-</span> anomalize<span class="sc">::</span>anomalize</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>plot_anomalies <span class="ot">&lt;-</span> anomalize<span class="sc">::</span>plot_anomalies</span></code></pre></div>
 <p>Collect data on the daily downloads of the <code>lubridate</code>
 package. This comes from the data set,
 <code>tidyverse_cran_downloads</code> that is part of

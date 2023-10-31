@@ -6,10 +6,16 @@ knitr::opts_chunk$set(
   fig.align = "center"
 )
 
-## ---- eval = T, message = F, warning = F--------------------------------------
+## ----eval = T, message = F, warning = F---------------------------------------
 library(tidyverse)
 library(tibbletime)
 library(anomalize)
+
+# NOTE: timetk now has anomaly detection built in, which 
+#  will get the new functionality going forward.
+
+anomalize <- anomalize::anomalize
+plot_anomalies <- anomalize::plot_anomalies
 
 ## -----------------------------------------------------------------------------
 tidyverse_cran_downloads
@@ -22,7 +28,7 @@ tidyverse_cran_downloads_anomalized <- tidyverse_cran_downloads %>%
 
 tidyverse_cran_downloads_anomalized %>% glimpse()
 
-## ---- fig.height=8, fig.width=6-----------------------------------------------
+## ----fig.height=8, fig.width=6------------------------------------------------
 tidyverse_cran_downloads_anomalized %>%
     plot_anomalies(ncol = 3, alpha_dots = 0.25)
 
@@ -41,7 +47,7 @@ lubridate_daily_downloads_anomalized <- lubridate_daily_downloads %>%
 
 lubridate_daily_downloads_anomalized %>% glimpse()
 
-## ---- fig.width=5, fig.height=6-----------------------------------------------
+## ----fig.width=5, fig.height=6------------------------------------------------
 p1 <- lubridate_daily_downloads_anomalized %>%
     plot_anomaly_decomposition() +
     ggtitle("Freq/Trend = 'auto'")
@@ -51,7 +57,7 @@ p1
 ## -----------------------------------------------------------------------------
 get_time_scale_template()
 
-## ---- fig.show="hold", fig.height=6, fig.align="default"----------------------
+## ----fig.show="hold", fig.height=6, fig.align="default"-----------------------
 # Local adjustment via time_decompose
 p2 <- lubridate_daily_downloads %>%
     time_decompose(count,
@@ -73,7 +79,7 @@ time_scale_template() %>%
 
 get_time_scale_template()
 
-## ---- fig.width=5, fig.height=6-----------------------------------------------
+## ----fig.width=5, fig.height=6------------------------------------------------
 p3 <- lubridate_daily_downloads %>%
     time_decompose(count) %>%
     anomalize(remainder) %>%
@@ -90,7 +96,7 @@ time_scale_template() %>%
 # Verify the change
 get_time_scale_template()
 
-## ---- fig.height=5, fig.width=5-----------------------------------------------
+## ----fig.height=5, fig.width=5------------------------------------------------
 p4 <- lubridate_daily_downloads %>%
     time_decompose(count) %>%
     anomalize(remainder, alpha = 0.05, max_anoms = 0.2) %>%
@@ -100,7 +106,7 @@ p4 <- lubridate_daily_downloads %>%
 
 p4
 
-## ---- fig.show="hold", fig.align="default"------------------------------------
+## ----fig.show="hold", fig.align="default"-------------------------------------
 p5 <- lubridate_daily_downloads %>%
     time_decompose(count) %>%
     anomalize(remainder, alpha = 0.025, max_anoms = 0.2) %>%
@@ -111,7 +117,7 @@ p5 <- lubridate_daily_downloads %>%
 p4 
 p5
 
-## ---- fig.show="hold", fig.align="default"------------------------------------
+## ----fig.show="hold", fig.align="default"-------------------------------------
 p6 <- lubridate_daily_downloads %>%
     time_decompose(count) %>%
     anomalize(remainder, alpha = 0.3, max_anoms = 0.2) %>%
